@@ -7,7 +7,14 @@ void main()
 { int gd=DETECT,gm,i,j,k;
   initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
   for(j=0;j<440;j=j+2)
-  { //road
+  { //frame
+    line(1,1,getmaxx(),1);
+    line(1,1,1,getmaxy());
+    line(getmaxx(),1,getmaxx(),getmaxy());
+    //line(1,440,getmaxx(),440);
+    line(1,getmaxy(),getmaxx(),getmaxy());
+
+    //road
     line(1,340,getmaxx(),340);
     line(1,380,getmaxx(),380);
     line(1,383,getmaxx(),383);
@@ -44,6 +51,10 @@ void main()
     { line(50+j,330,190,360);
       line(50+j,330,150+(j-120)*2,360);
     }
+    else if(j>160&&j<201)
+    { line(50+j,330,190+(j-160)*2,360);
+      line(50+j,330,230,360);
+    }
     else if(j>200&&j<241)
     { line(50+j,330,270,360);
       line(50+j,330,230+(j-200)*2,360);
@@ -59,6 +70,10 @@ void main()
     else if(j>320&&j<361)
     { line(50+j,330,350+(j-320)*2,360);
       line(50+j,330,390,360);
+    }
+    else if(j>360&&j<401)
+    { line(50+j,330,430,360);
+      line(50+j,330,390+(j-360)*2,360);
     }
     else
     { line(50+j,330,430+(j-400)*2,360);
@@ -78,6 +93,9 @@ void main()
       { outtextxy(random(getmaxx()),random(getmaxy()),"|"); }
     }
     delay(33);
+    if(j==438)
+    { break; }
+    cleardevice();
   }
   getch();
   closegraph();
